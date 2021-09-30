@@ -1,5 +1,6 @@
 import Head from 'next/head' //Used if you want custom titles or meta tags, keys or descriptions
 import ArticleList from '../components/ArticleList'
+import {server} from '../config/index'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 //Rule: can't import global stylesheets directly into components
@@ -17,13 +18,8 @@ export default function Home({articles}) {
   )
 }
 
-// Three methods to fetch data:
-  // getStaticProps - allows us to fetch data at build time
-  // getServerSideProps - allows us to fetch the data on every request (slower)
-  // getStaticPaths - allows us to dynamically generate paths based on the data we're fetching
-
 export const getStaticProps = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
+  const res = await fetch(`${server}/api/articles`)
   const articles = await res.json()
 
   return {
@@ -32,3 +28,20 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+
+// Three methods to fetch data:
+  // getStaticProps - allows us to fetch data at build time
+  // getServerSideProps - allows us to fetch the data on every request (slower)
+  // getStaticPaths - allows us to dynamically generate paths based on the data we're fetching
+
+// export const getStaticProps = async () => {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
+//   const articles = await res.json()
+
+//   return {
+//     props: {
+//       articles
+//     }
+//   }
+// }
