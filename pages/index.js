@@ -1,4 +1,4 @@
-import Head from 'next/head' //Used if you want custom titles or meta tags, keys or descriptions
+// import Head from 'next/head' //Used if you want custom titles or meta tags, keys or descriptions
 import ArticleList from '../components/ArticleList'
 import {server} from '../config/index'
 // import Image from 'next/image'
@@ -9,10 +9,10 @@ import {server} from '../config/index'
 export default function Home({articles}) {
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>WebDev Newz</title>
         <meta name='keywords' content='web development, programming' />
-      </Head>
+      </Head> */}
       <ArticleList articles={articles} />
     </div>
   )
