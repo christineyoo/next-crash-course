@@ -16,6 +16,8 @@ const article = ({article}) => {
     )
 }
 
+//You can either use the useRouter hook to grab the article's id or you can use this getServerSideProps function
+
 //getServerSideProps - fetches data at the time of request rather than at staticProps, which fetches at build time
 //getStaticPaths can dynamically generate all the paths with all the data
 
