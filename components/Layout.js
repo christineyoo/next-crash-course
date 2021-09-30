@@ -2,6 +2,7 @@
 //Convention: use lowercase for pages and Uppercase for any other components
 //Layout will wrap around any child components (_app.js)
 import Nav from './Nav'
+import Header from './Header'
 import styles from '../styles/Layout.module.css'
 
 const Layout = ({children}) => {
@@ -10,6 +11,7 @@ const Layout = ({children}) => {
         <Nav />
         <div className={styles.container}>
             <main className={styles.main}>
+                <Header />
                 {children}
             </main>
         </div>
