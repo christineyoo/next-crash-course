@@ -1,6 +1,5 @@
 import {articles} from '../../../data'
 
-// We want to be able to go to /api/articles/id and get the data for that specific id
 export default function handler({query: { id }}, res) {
     const filtered = articles.filter(article => article.id === id)
 

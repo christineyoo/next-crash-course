@@ -20,16 +20,7 @@ const article = ({article}) => {
     )
 }
 
-//You can either use the useRouter hook to grab the article's id or you can use this getServerSideProps function
-
-//getServerSideProps - fetches data at the time of request rather than at getStaticProps (which fetches at build time)
-
-//getStaticPaths can dynamically generate all the paths with all the data
-//You would need to use getStaticPaths and getStaticProps TOGETHER
-
-//context - allows us to get the id of whatever is in the url
-//This function could be getServerSideProps instead of getStaticProps
-
+// /////////////// This is how to do it with a database ///////////////
 export const getStaticProps = async (context) => {
     const res = await fetch(`${server}/api/articles/${context.params.id}`)
     const article = await res.json()
@@ -43,7 +34,6 @@ export const getStaticProps = async (context) => {
 
 //This generates all the paths for us for ALL the articles, even though our limit was 6
 export const getStaticPaths = async () => {
-    //These next two lines get us all of the posts (articles)
     const res = await fetch(`${server}/api/articles`)
     const articles = await res.json()
     const ids = articles.map(article => article.id)
@@ -53,6 +43,9 @@ export const getStaticPaths = async () => {
         fallback: false //returns 404 page if user navigates to something that doesn't exist
     }
 }
+
+// /////////////// This is how to do it with a 3rd party API ///////////////
+////////////////////////////////////////////////////////////////////////////
 
 // export const getStaticProps = async (context) => {
 //     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)

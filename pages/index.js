@@ -1,10 +1,6 @@
 // import Head from 'next/head' //Used if you want custom titles or meta tags, keys or descriptions
 import ArticleList from '../components/ArticleList'
 import {server} from '../config/index'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
-//Rule: can't import global stylesheets directly into components
-// You can call `styles` whatever you like. Just make sure to use correct file path on import statement
 
 export default function Home({articles}) {
   return (
@@ -18,6 +14,7 @@ export default function Home({articles}) {
   )
 }
 
+// /////////////// This is how to do it with a database ///////////////
 export const getStaticProps = async () => {
   const res = await fetch(`${server}/api/articles`)
   const articles = await res.json()
@@ -29,12 +26,7 @@ export const getStaticProps = async () => {
   }
 }
 
-
-// Three methods to fetch data:
-  // getStaticProps - allows us to fetch data at build time
-  // getServerSideProps - allows us to fetch the data on every request (slower)
-  // getStaticPaths - allows us to dynamically generate paths based on the data we're fetching
-
+// /////////////// This is how to do it with a 3rd party API ///////////////
 // export const getStaticProps = async () => {
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
 //   const articles = await res.json()

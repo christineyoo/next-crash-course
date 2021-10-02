@@ -14,7 +14,8 @@ const Layout = ({children}) => {
         <div className={styles.container}>
             <main className={styles.main}>
                 <Header />
-                {children}
+                {children} 
+                {/* children represents all the child components/pages */}
             </main>
         </div>
         </>
